@@ -1,0 +1,19 @@
+.InnerLogo {
+    background: url('../../../public/images/react-logo.svg') left no-repeat;
+    width: 50px;
+    height: 40px;
+    margin-top: 14px;
+    margin-bottom: 3px;
+    background-size: cover;            
+}
+
+.FormSignin {
+    font-family: "HelveticaNeue-Lt";
+    margin-top: 1px;
+    margin-bottom: 30px;
+}
+
+.Container {
+    margin-left:20px;
+    margin-bottom: 11px; 
+}

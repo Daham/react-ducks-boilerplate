@@ -1,0 +1,13 @@
+.MarkerBoard {
+    font-family: "HelveticaNeue-Lt";
+}
+
+.TextField{
+    border-top: '15px';
+    margin-bottom: '15px';
+}
+
+.Button{
+    border-top: '15px';
+    margin-bottom: '15px';
+}

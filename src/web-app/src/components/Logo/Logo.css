@@ -1,0 +1,15 @@
+.Logo {
+    background: url('../../../public/images/react-logo.svg') left no-repeat;
+    width: 135px;
+    height: 80px;
+    margin-top: 92px;
+    margin-bottom: 10px;
+    background-size: cover;            
+}
+
+.FormSignin {
+    font-family: "HelveticaNeue-Lt";
+    font-size: 1.714em;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
