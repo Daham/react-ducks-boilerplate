@@ -6,7 +6,7 @@
  * @desc Auth action creators
  */
 import { ModuleUtils } from 'Framework';
-import {updateObject} from '../utility';
+import { updateObject } from '../utility';
 
 const MODULE_NAME = 'layoutMain';
 
@@ -15,9 +15,9 @@ export const actionTypes = {
 }
 
 export const actions = {
-    layoutMain: ModuleUtils.createAction(actionTypes.LAYOUT_MAIN, () => ({
+    layoutMain: ModuleUtils.createAction(actionTypes.LAYOUT_MAIN, (value) => ({
         type: actionTypes.LAYOUT_MAIN,
-        value: actionTypes.LAYOUT_MAIN
+        value: value
     })),
 }
 
@@ -30,4 +30,7 @@ const reducer = ModuleUtils.handleActions(
     }
 );
 
-export default reducer;
+export default ModuleUtils.assignActions(
+    reducer,
+    [...Object.values(actionTypes)]
+);

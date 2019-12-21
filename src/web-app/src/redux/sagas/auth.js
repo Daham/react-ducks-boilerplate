@@ -8,7 +8,7 @@
 
 import { put, delay } from 'redux-saga/effects';
 
-import { actions as authActions } from '../modules/auth';
+import actions  from 'Actions';
 
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -22,7 +22,7 @@ async function mockAsyncLoginRequest({email, password, returnSecureToken}){
             data:{
                 idToken: 'MOCK_ID_TOKEN',
                 localId: 'MOCK_LOCAL_ID',
-                expiresIn: 10
+                expiresIn: 100
             }
         }
     }
@@ -32,21 +32,20 @@ async function mockAsyncLoginRequest({email, password, returnSecureToken}){
 export function* logoutSaga(action) {
     yield localStorage.removeItem('id_token');
     yield localStorage.removeItem('user_id');
-    yield put(authActions.logoutSucceed())
+    yield put(actions.auth.logoutSucceed())
 }
 
 export function* checkAuthTimeoutSaga(action) {
-
-    yield delay(action.expirationTime * 1000)
-    yield put(authActions.logout())
+    yield delay(action.payload.expirationTime * 1000)
+    yield put(actions.auth.authLogout())
 }
 
 export function* authSaga(action) {
-    yield put(authActions.authStart());
+    yield put(actions.auth.authStart());
 
     const authData = {
-        email: action.email,
-        password: action.password,
+        email: action.payload.email,
+        password: action.payload.password,
         returnSecureToken: true
     };
 
@@ -65,12 +64,13 @@ export function* authSaga(action) {
         yield localStorage.setItem('id_token', idToken);
         yield localStorage.setItem('user_id', localId);
 
-        yield put(authActions.authSuccess(idToken, localId));
-        yield put(authActions.checkAuthTimeout(response.data.expiresIn));
+        yield put(actions.auth.authSuccess(idToken, localId));
+        yield put(actions.auth.authCheckTimeout(response.data.expiresIn));
 
-        action.history.push('/');
+        action.payload.history.push('/');
+
     } catch (err) {
-        yield put(authActions.authFail(err));
+        yield put(actions.auth.authFail(err));
     }
 
 }

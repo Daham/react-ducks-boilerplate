@@ -34,7 +34,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-    return { isAuthenticated: state.auth.isAuthenticated }
+    return { isAuthenticated: state.app.getIn(['auth', 'isAuthenticated']) }
 };
 
 export default connect(mapStateToProps, null)(App);

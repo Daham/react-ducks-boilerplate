@@ -6,7 +6,7 @@
  * @desc Auth action creators
  */
 import { ModuleUtils } from 'Framework';
-import {updateObject} from '../utility';
+import { updateObject } from '../utility';
 
 const MODULE_NAME = 'auth';
 
@@ -21,10 +21,10 @@ export const actionTypes = {
 }
 
 export const actions = {
-    authSuccess: ModuleUtils.createAction(actionTypes.AUTH_START, (token, userId) => { token, userId }),
+    authSuccess: ModuleUtils.createAction(actionTypes.AUTH_SUCCESS, (token, userId) => ({ token, userId })),
     authFail: ModuleUtils.createAction(actionTypes.AUTH_FAIL, error => error),
-    authCheckTimeout: ModuleUtils.createAction(actionTypes.AUTH_CHECK_TIMEOUT, expirationTime => 100),
-    authUser: ModuleUtils.createAction(actionTypes.AUTH_USER, (email, password, isSignUp, history) => { email, password, isSignUp, history }),
+    authCheckTimeout: ModuleUtils.createAction(actionTypes.AUTH_CHECK_TIMEOUT, expirationTime => ({ expirationTime: expirationTime })),
+    authUser: ModuleUtils.createAction(actionTypes.AUTH_USER, (email, password, isSignUp, history) => ({ email, password, isSignUp, history })),
     authStart: ModuleUtils.createAction(actionTypes.AUTH_START),
     authInitiateLogout: ModuleUtils.createAction(actionTypes.AUTH_INITIATE_LOGOUT),
     authLogout: ModuleUtils.createAction(actionTypes.AUTH_LOGOUT),
@@ -60,4 +60,7 @@ const reducer = ModuleUtils.handleActions(
     }
 );
 
-export default reducer;
+export default ModuleUtils.assignActions(
+    reducer,
+    [...Object.values(actionTypes)]
+);

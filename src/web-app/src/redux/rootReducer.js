@@ -7,15 +7,9 @@
  */
 import { combineReducers } from 'redux';
 
-import moduleSet from './config/moduleSet';
-
-let state = {};
-
-_.forEach(moduleSet, (module, ) => {
-    state[module] = require('./modules/' + module).default
-});
+import appRootReducer from './appReducer';
 
 //Initialize the root reducer.
-const rootReducer = combineReducers(state);
-
-export default rootReducer;
+export default combineReducers({
+  app: appRootReducer
+});

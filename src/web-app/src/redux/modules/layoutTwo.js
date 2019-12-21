@@ -30,4 +30,7 @@ const reducer = ModuleUtils.handleActions(
     }
 );
 
-export default reducer;
+export default ModuleUtils.assignActions(
+    reducer,
+    [...Object.values(actionTypes)]
+);

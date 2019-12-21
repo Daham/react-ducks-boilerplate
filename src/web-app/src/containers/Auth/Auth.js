@@ -27,7 +27,7 @@ import Link from "@material-ui/core/Link";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import actions  from 'Actions';
+import actions from 'Actions';
 
 //Custom components
 import Logo from '../../components/Logo/Logo';
@@ -229,12 +229,12 @@ class Auth extends Component {
 }
 
 const mapStateToProps = state => {
-    return { loading: state.auth.loading }
+    return { loading: state.app.getIn(['auth', 'loading']) }
 };
 
 const matchDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password, isSignUp, history) => dispatch(actions.auth(email, password, isSignUp, history)),
+        onAuth: (email, password, isSignUp, history) => dispatch(actions.auth.authUser(email, password, isSignUp, history)),
     }
 };
 

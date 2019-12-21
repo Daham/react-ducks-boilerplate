@@ -1,17 +1,17 @@
+/**
+ * @author Daham Pathiraja
+ * @email Daham.Pathiraja@syscolabs.com
+ * @create date 2019-12-21 15:00:05
+ * @modify date 2019-12-21 15:00:05
+ * @desc [description]
+ */
+
 import _ from 'lodash';
 import * as reduxActions from 'redux-actions';
 
 const ModuleUtils = {
     ...reduxActions,
-    createSubscribedReducer: (reducerFunction, actionTypes = []) => {
-        return (state, action) => {
-            const { type } = action;
-            const isInitializationCall = state === undefined;
-
-            if (!actionTypes.includes(type) && !isInitializationCall) return state;
-            return reducerFunction(state, action);
-        }
-    }
+    assignActions: (reducerFunction, actionTypes = []) => ({ reducerFunction, actionTypes })
 }
 
 export {

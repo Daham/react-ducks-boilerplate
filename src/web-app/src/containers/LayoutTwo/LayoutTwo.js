@@ -1,3 +1,11 @@
+/**
+ * @author Daham Pathiraja
+ * @email Daham.Pathiraja@syscolabs.com
+ * @create date 2019-12-21 14:58:46
+ * @modify date 2019-12-21 14:58:46
+ * @desc [description]
+ */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -10,7 +18,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 import MarkerBoard from '../../components/MarkerBoard/MarkerBoard';
 
-import actions  from 'Actions';
+import actions from 'Actions';
 
 const styles = theme => ({
     root: {
@@ -50,7 +58,7 @@ class LayoutTwo extends Component {
 }
 
 const mapStateToProps = state => {
-    return { loading: state.auth.loading }
+    return { loading: state.app.getIn(['auth', 'loading']) }
 };
 
 const matchDispatchToProps = dispatch => {

@@ -1,3 +1,11 @@
+/**
+ * @author Daham Pathiraja
+ * @email Daham.Pathiraja@syscolabs.com
+ * @create date 2019-12-21 14:59:14
+ * @modify date 2019-12-21 14:59:14
+ * @desc [description]
+ */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,7 +20,7 @@ import MarkerBoard from '../../components/MarkerBoard/MarkerBoard';
 import LayoutOne from '../../containers/LayoutOne/LayoutOne';
 import LayoutTwo from '../../containers/LayoutTwo/LayoutTwo';
 
-import actions  from 'Actions';
+import actions from 'Actions';
 
 const styles = theme => ({
     root: {
@@ -32,7 +40,7 @@ const styles = theme => ({
 class LayoutMain extends Component {
 
     buttonClickHandler = (value) => {
-        this.props.onButtonClick();
+        this.props.onButtonClick(value);
     };
 
     render() {
@@ -57,12 +65,12 @@ class LayoutMain extends Component {
 }
 
 const mapStateToProps = state => {
-    return { loading: state.auth.loading }
+    return { loading: state.app.getIn(['auth', 'loading']) }
 };
 
 const matchDispatchToProps = dispatch => {
     return {
-        onButtonClick: () => dispatch(actions.layoutMain.layoutMain()),
+        onButtonClick: (value) => dispatch(actions.layoutMain.layoutMain(value)),
     }
 };
 

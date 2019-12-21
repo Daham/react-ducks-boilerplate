@@ -9,8 +9,6 @@ import { ModuleUtils } from 'Framework';
 import { updateObject } from '../utility';
 import allActionTypes from 'ActionTypes';
 
-console.log(allActionTypes.layoutMain.LAYOUT_MAIN)
-
 const MODULE_NAME = 'layoutOne';
 
 export const actionTypes = {
@@ -34,7 +32,7 @@ const reducer = ModuleUtils.handleActions(
     }
 );
 
-export default ModuleUtils.createSubscribedReducer(
+export default ModuleUtils.assignActions(
     reducer,
     [...Object.values(actionTypes),
     allActionTypes.layoutMain.LAYOUT_MAIN]
