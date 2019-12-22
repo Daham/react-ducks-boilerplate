@@ -36,7 +36,7 @@ class Home extends Component {
     }
 
     render() {
-        const { classes, match, fetchCurrentIncidents } = this.props;
+        const { classes, match } = this.props;
 
         return (
             <div className={classes.root}>

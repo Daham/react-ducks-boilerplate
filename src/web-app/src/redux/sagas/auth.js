@@ -32,7 +32,7 @@ async function mockAsyncLoginRequest({email, password, returnSecureToken}){
 export function* logoutSaga(action) {
     yield localStorage.removeItem('id_token');
     yield localStorage.removeItem('user_id');
-    yield put(actions.auth.logoutSucceed())
+    yield put(actions.auth.logoutSucceed());
 }
 
 export function* checkAuthTimeoutSaga(action) {
