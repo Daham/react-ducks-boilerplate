@@ -1,6 +1,6 @@
 # React Boilerplate (Quick Starter for React, Redux & Saga) #
 
-This React boilerplate is a very basic one which helps you do a quick start in React project while using Redux for state management and Saga for effect management.
+This React boilerplate is a very basic one which helps you do a quick start in React project while using Redux for state management and Saga for effect management..
 
 ### System Requirements ###
 
